@@ -7,6 +7,8 @@ import { AuthController } from './controllers/auth.controller';
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
 import { JwtModule } from '@nestjs/jwt';
+import { PharmacyController } from './controllers/pharmacy.controller';
+import { PharmacyService } from './services/pharmacy.service';
 
 @Module({
   imports: [
@@ -26,7 +28,12 @@ import { JwtModule } from '@nestjs/jwt';
       signOptions: { expiresIn: '900s' },
     }),
   ],
-  controllers: [AppController, UserController, AuthController],
-  providers: [AppService, UserService, AuthService],
+  controllers: [
+    AppController,
+    UserController,
+    AuthController,
+    PharmacyController,
+  ],
+  providers: [AppService, UserService, AuthService, PharmacyService],
 })
 export class AppModule {}

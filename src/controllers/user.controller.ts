@@ -10,7 +10,7 @@ import {
 import { User } from 'src/entities/user.entity';
 import { UserService } from 'src/services/user.service';
 
-@Controller('users')
+@Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
@@ -29,8 +29,8 @@ export class UserController {
     return this.userService.findOne(+id);
   }
 
-  @Put(':id')
-  update(@Param('id') id: string, @Body() user: User) {
+  @Put()
+  update(@Body() user: User) {
     return this.userService.update(user);
   }
 
