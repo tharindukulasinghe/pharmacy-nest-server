@@ -9,6 +9,8 @@ import { AuthService } from './services/auth.service';
 import { JwtModule } from '@nestjs/jwt';
 import { PharmacyController } from './controllers/pharmacy.controller';
 import { PharmacyService } from './services/pharmacy.service';
+import { OrderController } from './controllers/order.controller';
+import { OrderService } from './services/order.service';
 
 @Module({
   imports: [
@@ -22,6 +24,7 @@ import { PharmacyService } from './services/pharmacy.service';
       synchronize: true,
       entities: ['dist/**/*.entity{.ts,.js}'],
       autoLoadEntities: true,
+      logging: false,
     }),
     JwtModule.register({
       secret: 'pharmacy',
@@ -33,7 +36,14 @@ import { PharmacyService } from './services/pharmacy.service';
     UserController,
     AuthController,
     PharmacyController,
+    OrderController,
   ],
-  providers: [AppService, UserService, AuthService, PharmacyService],
+  providers: [
+    AppService,
+    UserService,
+    AuthService,
+    PharmacyService,
+    OrderService,
+  ],
 })
 export class AppModule {}

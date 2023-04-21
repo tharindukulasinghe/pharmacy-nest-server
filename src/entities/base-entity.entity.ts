@@ -23,6 +23,7 @@ export class BaseEntity {
   @DeleteDateColumn()
   deletedDate: Date;
 
+  @ApiProperty()
   @Column()
   createdUserId: number;
 }
