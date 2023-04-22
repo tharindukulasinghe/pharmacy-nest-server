@@ -44,16 +44,4 @@ export class BillService extends CommonService {
 
     return apiResponse;
   }
-
-  async findAll() {
-    const apiResponse = new ApiResponse();
-    try {
-      const entity = await this.entityManager.find(Pharmacy);
-      apiResponse.data = entity;
-    } catch (error) {
-      apiResponse.error = true;
-      apiResponse.message = error.message;
-    }
-    return apiResponse;
-  }
 }
