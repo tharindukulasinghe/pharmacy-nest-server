@@ -3,20 +3,16 @@ import { BaseEntity } from './base-entity.entity';
 import { ApiProperty } from '@nestjs/swagger';
 
 @Entity()
-export class Order extends BaseEntity {
+export class PharmacyPrice extends BaseEntity {
   @ApiProperty()
   @Column()
-  dueDate: Date;
+  pharmacyId: number;
 
   @ApiProperty()
   @Column()
-  notes: string;
-
-  @ApiProperty()
-  @Column('longtext')
-  image: string;
+  itemId: number;
 
   @ApiProperty()
   @Column()
-  district: number;
+  price: number;
 }
