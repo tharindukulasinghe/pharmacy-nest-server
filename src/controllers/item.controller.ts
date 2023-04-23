@@ -24,6 +24,11 @@ export class ItemController {
     return this.entityService.findAll();
   }
 
+  @Get('pharmacy-items/:pharmacyId')
+  pharmacyItems(@Param('pharmacyId') pharmacyId: string) {
+    return this.entityService.pharmacyItems(+pharmacyId);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.entityService.findOne(+id);

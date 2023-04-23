@@ -3,6 +3,7 @@ import { DataSource, Not } from 'typeorm';
 import { CommonService } from './common.service';
 import { ApiResponse } from 'src/common/classes/api-response';
 import { Item } from 'src/entities/item.entity';
+import { ItemList } from 'src/views/item-list.entity';
 
 @Injectable()
 export class ItemService extends CommonService {
@@ -39,6 +40,20 @@ export class ItemService extends CommonService {
     const apiResponse = new ApiResponse();
     try {
       const entity = await this.entityManager.find(Item);
+      apiResponse.data = entity;
+    } catch (error) {
+      apiResponse.error = true;
+      apiResponse.message = error.message;
+    }
+    return apiResponse;
+  }
+
+  async pharmacyItems(pharmacyId: number) {
+    const apiResponse = new ApiResponse();
+    try {
+      const entity = await this.entityManager.find(ItemList, {
+        where: { stockPharmacyId: pharmacyId, pricePharmacyId: pharmacyId },
+      });
       apiResponse.data = entity;
     } catch (error) {
       apiResponse.error = true;
