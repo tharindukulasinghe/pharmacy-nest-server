@@ -17,6 +17,8 @@ import { PharmacyPriceService } from './services/pharmacy-price.service';
 import { PharmacyStockService } from './services/pharmacy-stock.service';
 import { ItemController } from './controllers/item.controller';
 import { ItemService } from './services/item.service';
+import { BillController } from './controllers/bill.controller';
+import { BillService } from './services/bill.service';
 
 @Module({
   imports: [
@@ -46,6 +48,7 @@ import { ItemService } from './services/item.service';
     ItemController,
     PharmacyPriceController,
     PharmacyStockController,
+    BillController,
   ],
   providers: [
     AppService,
@@ -56,6 +59,7 @@ import { ItemService } from './services/item.service';
     ItemService,
     PharmacyPriceService,
     PharmacyStockService,
+    BillService,
   ],
 })
 export class AppModule {}

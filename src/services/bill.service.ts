@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { DataSource, Not } from 'typeorm';
+import { DataSource } from 'typeorm';
 import { CommonService } from './common.service';
 import { ApiResponse } from 'src/common/classes/api-response';
-import { Pharmacy } from 'src/entities/pharmacy.entity';
 import { BillDto } from 'src/dtos/bill';
 import { Bill } from 'src/entities/bill.entity';
 import { BillItem } from 'src/entities/bill-item.entity';
