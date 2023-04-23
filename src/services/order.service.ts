@@ -13,6 +13,7 @@ export class OrderService extends CommonService {
   async create(order: Order) {
     const apiResponse = new ApiResponse();
     try {
+      order.status = 1;
       const entity = await this.entityManager.save(Order, order);
       apiResponse.data = entity;
     } catch (error) {

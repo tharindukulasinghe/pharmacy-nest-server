@@ -19,4 +19,10 @@ export class Order extends BaseEntity {
   @ApiProperty()
   @Column()
   district: number;
+
+  @Column()
+  status: number;
+
+  @Column({ nullable: true })
+  selectedBillId: number;
 }
