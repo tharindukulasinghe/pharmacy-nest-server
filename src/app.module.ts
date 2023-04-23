@@ -11,6 +11,12 @@ import { PharmacyController } from './controllers/pharmacy.controller';
 import { PharmacyService } from './services/pharmacy.service';
 import { OrderController } from './controllers/order.controller';
 import { OrderService } from './services/order.service';
+import { PharmacyStockController } from './controllers/pharmacy-stock.controller';
+import { PharmacyPriceController } from './controllers/pharmacy-price.controller';
+import { PharmacyPriceService } from './services/pharmacy-price.service';
+import { PharmacyStockService } from './services/pharmacy-stock.service';
+import { ItemController } from './controllers/item.controller';
+import { ItemService } from './services/item.service';
 
 @Module({
   imports: [
@@ -37,6 +43,9 @@ import { OrderService } from './services/order.service';
     AuthController,
     PharmacyController,
     OrderController,
+    ItemController,
+    PharmacyPriceController,
+    PharmacyStockController,
   ],
   providers: [
     AppService,
@@ -44,6 +53,9 @@ import { OrderService } from './services/order.service';
     AuthService,
     PharmacyService,
     OrderService,
+    ItemService,
+    PharmacyPriceService,
+    PharmacyStockService,
   ],
 })
 export class AppModule {}
