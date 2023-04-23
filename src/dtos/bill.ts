@@ -21,3 +21,11 @@ export class BillItem {
   @ApiProperty()
   quantity: number;
 }
+
+export class SelectBillDto {
+  @ApiProperty()
+  orderId: number;
+
+  @ApiProperty()
+  billId: number;
+}

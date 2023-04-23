@@ -10,6 +10,7 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { SelectBillDto } from 'src/dtos/bill';
 import { Order } from 'src/entities/order.entity';
 import { OrderService } from 'src/services/order.service';
 
@@ -24,6 +25,21 @@ export class OrderController {
     const base64Image = new Buffer(buffer).toString('base64');
     order.image = base64Image;
     return this.entityService.create(order);
+  }
+
+  @Get('my-orders/:userId')
+  myOrders(@Param('userId') id: string) {
+    return this.entityService.myOrders(+id);
+  }
+
+  @Get(':districtId')
+  districtOrders(@Param('districtId') districtId: string) {
+    return this.entityService.myOrders(+districtId);
+  }
+
+  @Post('select-bill')
+  selectBill(@Body() selectBillDto: SelectBillDto) {
+    return this.entityService.selectBill(selectBillDto);
   }
 
   @Get()
