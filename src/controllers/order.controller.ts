@@ -32,9 +32,14 @@ export class OrderController {
     return this.entityService.myOrders(+id);
   }
 
-  @Get(':districtId')
+  @Get('disctricts/:districtId')
   districtOrders(@Param('districtId') districtId: string) {
-    return this.entityService.myOrders(+districtId);
+    return this.entityService.districtOrders(+districtId);
+  }
+
+  @Get('bills/:orderId')
+  billsForOrder(@Param('orderId') orderId: string) {
+    return this.entityService.districtOrders(+orderId);
   }
 
   @Post('select-bill')
