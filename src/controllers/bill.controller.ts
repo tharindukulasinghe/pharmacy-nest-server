@@ -20,4 +20,9 @@ export class BillController {
   create(@Body() billDto: BillDto) {
     return this.entityService.create(billDto);
   }
+
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.entityService.findOne(+id);
+  }
 }

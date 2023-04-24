@@ -5,6 +5,7 @@ import { ApiResponse } from 'src/common/classes/api-response';
 import { BillDto } from 'src/dtos/bill';
 import { Bill } from 'src/entities/bill.entity';
 import { BillItem } from 'src/entities/bill-item.entity';
+import { Order } from 'src/entities/order.entity';
 
 @Injectable()
 export class BillService extends CommonService {
@@ -34,6 +35,34 @@ export class BillService extends CommonService {
           await transactionalEntityManager.save(BillItem, billItem);
         }
 
+        apiResponse.data = entity;
+      });
+    } catch (error) {
+      apiResponse.error = true;
+      apiResponse.message = error.message;
+    }
+
+    return apiResponse;
+  }
+
+  async findOne(id: number) {
+    const apiResponse = new ApiResponse();
+
+    try {
+      await this.dataSource.transaction(async (transactionalEntityManager) => {
+        let bill = await transactionalEntityManager.findOne(Bill, {
+          where: { id: id },
+        });
+
+        let billItems = transactionalEntityManager.find(BillItem, {
+          where: { billId: bill.id },
+        });
+
+        let order = transactionalEntityManager.find(Order, {
+          where: { id: bill.orderId },
+        });
+
+        let entity: any = { order, bill, billItems };
         apiResponse.data = entity;
       });
     } catch (error) {
